@@ -1,0 +1,162 @@
+<div class="container bucket-container" id="" role="main">
+  <div>
+    <h1 class="headline text-weight_300">
+      프로젝트 생성
+    </h1>
+  </div>
+      <form accept-charset="UTF-8" action="#" class="new_project_request" id="new_project_request" method="post">
+          <div class="each-form-large-line form-group form-group-lg">
+            <h3>제목</h3>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <input class="form-control input-lg" type="text" placeholder="Title"><br>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+
+          <div class="each-form-large-line form-group form-group-lg">
+            <h3>한 줄 설명</h3>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <input class="form-control input-lg" type="text" placeholder="One line"><br>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+
+          <div class="each-form-large-line form-group form-group-lg">
+            <h3>사진</h3>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <input type="file" name="pic" accept="image/*">
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+
+
+
+          <div class="each-form-textarea form-group form-group-lg">
+            <h3>소개</h3>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <textarea class="form-control" rows="11" placeholder="Introduce"></textarea>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+
+          <div class="each-form-large-line form-group form-group-lg">
+            <h3>후원 희망 자금</h3>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                  <div class="input-group">
+                    <input class="form-control" type="text">
+                    <div class="input-group-addon">원</div>
+                  </div>
+            </div>
+            <div class="col-sm-3"></div>
+
+          </div>
+
+
+
+          <div class="each-form-large-line form-group form-group-lg" style="margin-bottom:100px">
+            <h3>후원 희망 물품  <button type="button" class="btn btn-warning btn-xs add-item"> + </button> </h3>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                  <div class="item-wrapper">
+                    <div class="form-group">
+                      <input class="form-control item-input" type="text">
+                    </div>            
+                  </div>
+            </div>
+            <div class="col-sm-3"></div>
+
+          </div>
+
+
+        <div class="each-form-multi-line form-group form-group-lg">
+          <h3>후원기간</h3>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3">
+            <h4>시작일</h4>
+            <div class="col-sm-4">
+              <select class="form-control"><option value="">Year</option>
+              <option>2015</option>
+              <option>2016</option>
+              <option>2017</option></select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control"><option value="">Month</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option></select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control"><option value="">Day</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option></select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <h4>마감일</h4>
+            <div class="col-sm-4">
+              <select class="form-control"><option value="">Year</option>
+              <option>2015</option>
+              <option>2016</option>
+              <option>2017</option></select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control"><option value="">Month</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option></select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control"><option value="">Day</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option></select>
+            </div>
+          </div>
+          <div class="col-sm-3"></div>
+
+        </div>
+        <button type="button" class="btn btn-primary btn-lg">등록하기</button>
+      </form> 
+</div>
+
+
+<script type="text/javascript">
+  
+  $(document).ready(function() {
+      var max_fields      = 10; //maximum input boxes allowed
+      var wrapper         = $(".item-wrapper"); //Fields wrapper
+      var add_button      = $(".add-item"); //Add button ID
+     
+      var x = 1; //initlal text box count
+      $(add_button).click(function(e){ //on add input button click
+          e.preventDefault();
+          if(x < max_fields){ //max input box allowed
+              x++; //text box increment
+              $(wrapper).append('<div class="form-group"><input class="form-control item-input"><button type="button" class="close remove-field" aria-label="Close"><span aria-hidden="true">&times;</span></button></input></div>'); //add input box
+          }
+      });
+     
+      $(wrapper).on("click",".remove-field", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+  });
+
+</script>
