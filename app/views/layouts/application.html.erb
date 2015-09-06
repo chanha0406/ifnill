@@ -52,9 +52,16 @@ height="30px"></a>
               </ul>
               
               <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="#sign_in">Sign in</a>
-                  </li>
+                  
+                  <% if current_user.nil? %>
+                    <li>
+                        <a href="/users/sign_in">Sign in</a>
+                    </li>
+                    <% else %>
+                    <li>
+                        <a href="/users/sign_out"><%= current_user.email %></a>
+                    </li>
+                    <% end %>
               </ul>
               
               
