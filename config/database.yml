@@ -20,11 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  adapter: mysql2
-  encoding: utf8
-  database: ifnill_production
-  pool: 5
-  username: root
-  password: vanguard5likelion
-  socket: /var/run/mysqld/mysqld.sock
+ production:
+  <<: *default
+  database: db/production.sqlite3
