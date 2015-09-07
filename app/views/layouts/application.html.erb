@@ -59,7 +59,10 @@ height="30px"></a>
                     </li>
                     <% else %>
                     <li>
-                        <a href="/users/sign_out"><%= current_user.email %></a>
+                        <a href="#mypage"><%= current_user.email %></a>
+                    </li>
+                    <li>
+                        <a href="/users/sign_out" data-method="get">Sign out</a>
                     </li>
                     <% end %>
               </ul>
