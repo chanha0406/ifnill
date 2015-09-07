@@ -1,5 +1,7 @@
 class BucketController < ApplicationController
 
+    before_action :authenticate_user!, only:[:make_bucket]
+
     def projectList
     end
     

@@ -53,18 +53,19 @@ height="30px"></a>
               
               <ul class="nav navbar-nav navbar-right">
                   
-                  <% if current_user.nil? %>
-                    <li>
-                        <a href="/users/sign_in">Sign in</a>
-                    </li>
-                    <% else %>
-                    <li>
-                        <a href="#mypage"><%= current_user.email %></a>
-                    </li>
-                    <li>
-                        <a href="/users/sign_out" data-method="get">Sign out</a>
-                    </li>
-                    <% end %>
+                <% if current_user.nil? %>
+                  <li>
+                      <a href="/users/sign_in">Sign in</a>
+                  </li>
+                  <% else %>
+                  <li <% if params[:controller]=='mypage'%> class="active" <%end%> >
+                      <a href="/mypage/mypage" >My Page</a>
+                  </li>
+
+                  <li>
+                      <a href="/users/sign_out" data-method="get">Sign out</a>
+                  </li>
+                  <% end %>
               </ul>
               
               
