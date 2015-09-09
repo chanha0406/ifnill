@@ -15,5 +15,12 @@ class BucketController < ApplicationController
     end
 
     def make_bucket	
+
+        @days=["junwoo","zlzl","dlzdlz"]
+
+    end
+
+    def create_bucket
+
     end
 end

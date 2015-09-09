@@ -7,22 +7,22 @@
       <form accept-charset="UTF-8" action="#" class="new_project_request text-left" id="new_project_request" method="post">
           <div class="each-form-single-line form-group form-group-lg">
             <h3>제목</h3>
-              <input class="form-control input-lg" type="text" placeholder="Title"><br>
+              <input class="form-control input-lg" type="text" placeholder="Title" name="name"><br>
           </div>
 
           <div class="each-form-single-line form-group form-group-lg">
             <h3>한 줄 설명</h3>
-              <input class="form-control input-lg" type="text" placeholder="One line">
+              <input class="form-control input-lg" type="text" placeholder="One line" name="intro_simple">
           </div>
 
           <div class="each-form-single-line form-group form-group-lg">
             <h3>사진</h3>
-              <input type="file" name="pic" accept="image/*">
+              <input type="file" name="thumbnail" accept="image/*">
           </div>
 
           <div class="each-form-single-line form-group form-group-lg">
             <h3>소개</h3>
-                <textarea class="form-control" rows="11" placeholder="Introduce"></textarea>
+                <textarea class="form-control" rows="11" placeholder="Introduce" name="intro_detail"></textarea>
           </div>
 
 
@@ -30,56 +30,14 @@
                   <h3>후원기간</h3>
                   <div class="col-sm-6">
                     <h4>시작일</h4>
-                    <div class="col-sm-4">
-                      <select class="form-control"><option value="">Year</option>
-                      <option>2015</option>
-                      <option>2016</option>
-                      <option>2017</option></select>
-                    </div>
-                    <div class="col-sm-4">
-                      <select class="form-control"><option value="">Month</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option></select>
-                    </div>
-                    <div class="col-sm-4">
-                      <select class="form-control"><option value="">Day</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option></select>
+                    <div>
+                      <input class="form-control" id="dpd1" tpye="text">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <h4>마감일</h4>
-                    <div class="col-sm-4">
-                      <select class="form-control"><option value="">Year</option>
-                      <option>2015</option>
-                      <option>2016</option>
-                      <option>2017</option></select>
-                    </div>
-                    <div class="col-sm-4">
-                      <select class="form-control"><option value="">Month</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option></select>
-                    </div>
-                    <div class="col-sm-4">
-                      <select class="form-control"><option value="">Day</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option></select>
+                    <div>
+                      <input class="form-control" id="dpd2" tpye="text">
                     </div>
                   </div>
         </div>
@@ -88,16 +46,16 @@
             <h3>후원 희망 물품  <button type="button" class="btn btn-warning btn-xs add-item"> + </button> </h3>
                   <div class="item-wrapper">
                     <div class="form-group col-sm-3 item-form">
-                      <input class="form-control item-input" type="text">
+                      <input class="form-control item-input" type="text" name="item_1">
                     </div>
                     <div class="form-group col-sm-3 item-form">
-                      <input class="form-control item-input" type="text">
+                      <input class="form-control item-input" type="text" name="item_2">
                     </div>  
                     <div class="form-group col-sm-3 item-form">
-                      <input class="form-control item-input" type="text">
+                      <input class="form-control item-input" type="text" name="item_3">
                     </div>
                     <div class="form-group col-sm-3 item-form">
-                      <input class="form-control item-input" type="text">
+                      <input class="form-control item-input" type="text" name="item_4">
                     </div>             
                   </div>
 
@@ -114,18 +72,46 @@
       var wrapper         = $(".item-wrapper"); //Fields wrapper
       var add_button      = $(".add-item"); //Add button ID
      
-      var x = 1; //initlal text box count
+      var x = 4; //initlal text box count
       $(add_button).click(function(e){ //on add input button click
           e.preventDefault();
           if(x < max_fields){ //max input box allowed
               x++; //text box increment
-              $(wrapper).append('<div class="form-group col-sm-3 item-form"><input class="form-control item-input"><button type="button" class="close remove-field" aria-label="Close"><span aria-hidden="true">&times;</span></button></input></div>'); //add input box
+              $(wrapper).append('<div class="form-group col-sm-3 item-form"><input class="form-control item-input" name="item_'+x+'"><button type="button" class="close remove-field" aria-label="Close"><span aria-hidden="true">&times;</span></button></input></div>'); //add input box
           }
       });
      
       $(wrapper).on("click",".remove-field", function(e){ //user click on remove text
           e.preventDefault(); $(this).parent('div').remove(); x--;
       })
+
+
+      /* datepicker */
+      var nowTemp = new Date();
+      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+       
+      var checkin = $('#dpd1').datepicker({
+        onRender: function(date) {
+          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+      }).on('changeDate', function(ev) {
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+          var newDate = new Date(ev.date)
+          newDate.setDate(newDate.getDate() + 1);
+          checkout.setValue(newDate);
+        }
+        checkin.hide();
+        $('#dpd2')[0].focus();
+      }).data('datepicker');
+      var checkout = $('#dpd2').datepicker({
+        onRender: function(date) {
+          return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+        }
+      }).on('changeDate', function(ev) {
+        checkout.hide();
+      }).data('datepicker');
+
+
   });
 
 </script>

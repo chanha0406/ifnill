@@ -34,7 +34,7 @@ data-target="#bs-example-navbar-collapse-1">
                   <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand topnav" href="/"><img src="
-              <% if params[:action]=='index' %><%= image_url('ifnill_logo_white.png') %><%else%> <%= image_url('ifnill_logo.png')%><%end%>" 
+              <% if params[:action]=='index' %><%= image_url('logo_white.png') %><%else%> <%= image_url('logo_blue.png')%><%end%>" 
 height="30px"></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,16 +55,22 @@ height="30px"></a>
                   
                 <% if current_user.nil? %>
                   <li>
-                      <a href="/users/sign_in">Sign in</a>
+                    <%= link_to 'Sign in', new_user_session_path %>
+
                   </li>
                   <% else %>
+                  <li>
+                    <a id="username">Hello, <%=current_user.name %></a> 
+                  </li>
+
                   <li <% if params[:controller]=='mypage'%> class="active" <%end%> >
-                      <a href="/mypage/mypage" >My Page</a>
+                  <a href="/mypage/mypage">My Page</a>
                   </li>
 
                   <li>
-                      <a href="/users/sign_out" data-method="get">Sign out</a>
+                      <%= link_to 'Sign out', destroy_user_session_path, method: :get %>
                   </li>
+                  
                   <% end %>
               </ul>
               

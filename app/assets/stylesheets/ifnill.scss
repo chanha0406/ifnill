@@ -193,6 +193,13 @@ p.copyright {
     border-bottom: 3px solid rgba(0,173,239,.25);
 }
 
+.navbar-default .navbar-nav > li > a#username,
+.navbar-default .navbar-nav > li > a#username:hover,
+.navbar-default .navbar-nav > li > a#username:focus {
+    color: #333;
+    border-bottom: 0px solid rgba(0,0,0,0);
+}
+
 .navbar-brand {
     height: 60px;
 }

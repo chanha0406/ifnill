@@ -4,8 +4,10 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
 gem 'figaro'
-
 gem 'devise'
+
+gem 'bootstrap-datepicker-rails'
+gem 'watu_table_builder', :require => 'table_builder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
