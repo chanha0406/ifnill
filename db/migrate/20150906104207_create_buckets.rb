@@ -10,6 +10,7 @@ class CreateBuckets < ActiveRecord::Migration
     	 t.date :finish_date
     	 t.string :thumbnail_url
     	 t.text :image_url
+      t.string :contents_url
 
       t.timestamps null: false
     end
