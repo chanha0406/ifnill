@@ -1,68 +1,37 @@
-<div style="margin-top: 63px;">
-    <div class="container">
-        <div class="bucket-main">
-            <h1>firstProcessList</h1>
-        </div>
-        <div class="row"> 
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <iframe width="358" height="168" src="https://www.youtube.com/embed/o_1aF54DO60" frameborder="0" allowfullscreen></iframe>
-                    <div class="caption">
-                        <h4 class="pull-right">100%</h4>
-                        <h4><a href="https://youtu.be/o_1aF54DO60">글레스톤베리 락페스티벌 가기</a>
-                        </h4>
-                        <p>
-                            <span>한국의 락을 알리고 오갔어요<span>
-                            <span class="pull-right">완료!</span>
-                        </p>
-                    </div>
-                    <div class="ratings">
-                        <p>
-                            버킷리스트가 실현 되었습니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <iframe width="358" height="168" src="https://www.youtube.com/embed/o_1aF54DO60" frameborder="0" allowfullscreen></iframe>
-                    <div class="caption">
-                        <h4 class="pull-right">100%</h4>
-                        <h4><a href="#">3일 동안 안깨고 잠자기</a>
-                        </h4>
-                        <p>
-                            <span>인생은 박주영 처럼, 잠자기는 나폴레옹처럼<span>
-                            <span class="pull-right">완료!</span>
-                        </p>
-                    </div>
-                    <div class="ratings">
-                        <p>
-                            버킷리스트가 실현 되었습니다.
-                        </p>
+<div class="container bucket-container">
+    <div class="bucket-main">
+        <h1>3단계</h1>
+    </div>
+    <div class="row"> 
+        <% unless @final_buckets.nil? %>
+            <% @final_buckets.each do |bucket| %>
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <div style="min-height:360px">
+                            <iframe width="100%" height="360" src="https://www.youtube.com/embed/o_1aF54DO60" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="caption">
+                            <h4 class="pull-right"><%= ((bucket.items.where(:state => 2).count.to_f / bucket.items.count.to_f)*100).round(1) %> %</h4>
+                            <h4><a href="https://youtu.be/o_1aF54DO60"><%= bucket.name %></a>
+                            </h4>
+                            <p>
+                                <span><%= bucket.intro_simple %><span>
+                                <span class="pull-right">완료!</span>
+                            </p>
+                        </div>
+                        <div class="ratings">
+                            <p>
+                                버킷리스트가 실현 되었습니다.
+                            </p>
+                        </div>
                     </div>
                 </div>
+            <% end %>
+        <% else %>
+            <div class="bucket-main">
+                <p class="lead">500여개의 꿈들을 후원해줄 200개의 회사가 당신의 꿈을 응원합니다.</p>
+                <p><a class="btn btn-lg btn-primary" href="/bucket/make_bucket" role="button">프로젝트 등록하러 가기</a></p>
             </div>
-    
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <iframe width="358" height="168" src="https://www.youtube.com/embed/o_1aF54DO60" frameborder="0" allowfullscreen></iframe>
-                    <div class="caption">
-                        <h4 class="pull-right">100%</h4>
-                        <h4><a href="#">드뷔시 「달빛」 연주 마스터</a>
-                        </h4>
-                        <p>
-                            <span>인생은 박주영 처럼, 잠자기는 나폴레옹처럼<span>
-                            <span class="pull-right">완료!</span>
-                        </p>
-                    </div>
-                    <div class="ratings">
-                        <p>
-                            버킷리스트가 실현 되었습니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% end %>
     </div>
 </div>

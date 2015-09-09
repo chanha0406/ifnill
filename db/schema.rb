@@ -14,41 +14,43 @@
 ActiveRecord::Schema.define(version: 20150906114458) do
 
   create_table "buckets", force: :cascade do |t|
-    t.integer  "f_user_id"
+    t.integer  "user_id"
     t.string   "name"
     t.string   "intro_simple"
     t.string   "intro_detail"
     t.date     "start_date"
     t.date     "finish_date"
-    t.string   "thumbnail_url"
-    t.text     "image_url"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "thumbnail"
+    t.text     "images"
+    t.string   "contents_url"
+    t.integer  "state"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer  "f_bucket_id"
+    t.integer  "bucket_id"
     t.string   "name"
     t.string   "intro"
     t.integer  "state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "replies", force: :cascade do |t|
-    t.integer  "f_user_id"
-    t.integer  "f_bucket_id"
+    t.integer  "user_id"
+    t.integer  "bucket_id"
     t.text     "context"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "supports", force: :cascade do |t|
-    t.integer  "f_user_id"
-    t.integer  "f_item_id"
-    t.integer  "f_bucket_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "bucket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

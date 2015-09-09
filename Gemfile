@@ -9,6 +9,14 @@ gem 'devise'
 gem 'bootstrap-datepicker-rails'
 gem 'watu_table_builder', :require => 'table_builder'
 
+gem 'carrierwave'
+gem 'fog'
+
+gem 'time_diff'
+
+gem 'fastimage_resize'
+# apt-get install libgd2-xpm-dev
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record

@@ -9,21 +9,21 @@
             <div class="each-step col-lg-4">
               <h1>1st 단계</h1>
               <div class="imageContainer img-circle" alt="Generic placeholder image"></div>
-              <h2>563개</h2>
+              <h2><%= @first_bucket_count %>개</h2>
               <p>후원을 기다리고 있는 프로젝트들 입니다.</p>
               <p><a class="btn btn-default" href="/bucket/firstProcessList" role="button">더 많은 프로젝트 보기</a></p>
             </div>
             <div class="each-step col-lg-4">
               <h1>2nd 단계</h1>
               <div class="imageContainer img-circle" alt="Generic placeholder image"></div>
-              <h2>255개</h2>
+              <h2><%= @second_bucket_count %>개</h2>
               <p>후원을 다 마치고, 실현 단계에 있는 프로젝트들 입니다.</p>
               <p><a class="btn btn-default" href="/bucket/secondProcessList" role="button">더 많은 프로젝트 보기</a></p>
             </div>
             <div class="each-step col-lg-4">
               <h1>3rd 단계</h1>
               <div class="imageContainer img-circle" alt="Generic placeholder image"></div>
-              <h2>3개</h2>
+              <h2><%= @final_bucket_count %>개</h2>
               <p>실현을 끝낸 프로젝트들의 결과물들 입니다.</p>
               <p><a class="btn btn-default" href="/bucket/finalProcessList" role="button">더 많은 결과물 보기</a></p>
             </div>

@@ -1,6 +1,8 @@
 class Bucket < ActiveRecord::Base
 
-	serialize :image_url, Array
+	serialize :images, Array
+
+	mount_uploader :thumbnail, BucketImageUploader
 
 	has_many :items
 	has_many :supports
