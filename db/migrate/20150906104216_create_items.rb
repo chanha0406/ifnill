@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration
     	 t.integer :f_bucket_id
     	 t.string :name
     	 t.string :intro
+    	 t.integer :state
 
       t.timestamps null: false
     end

@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20150906114458) do
     t.string   "name"
     t.string   "intro_simple"
     t.string   "intro_detail"
-    t.datetime "start_date"
-    t.datetime "finish_date"
+    t.date     "start_date"
+    t.date     "finish_date"
     t.string   "thumbnail_url"
     t.text     "image_url"
     t.datetime "created_at",    null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150906114458) do
     t.integer  "f_bucket_id"
     t.string   "name"
     t.string   "intro"
+    t.integer  "state"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

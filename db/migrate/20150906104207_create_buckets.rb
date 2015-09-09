@@ -6,8 +6,8 @@ class CreateBuckets < ActiveRecord::Migration
     	 t.string :name
     	 t.string :intro_simple
     	 t.string :intro_detail
-    	 t.datetime :start_date
-    	 t.datetime :finish_date
+    	 t.date :start_date
+    	 t.date :finish_date
     	 t.string :thumbnail_url
     	 t.text :image_url
 
