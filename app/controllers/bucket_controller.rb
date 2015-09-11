@@ -59,9 +59,10 @@ class BucketController < ApplicationController
             item=Item.new
             item.bucket_id=bucket.id
             item.name=params['item_'+i.to_s]
+            item.intro=params['item_'+i.to_s+'_intro']
             item.state=0
             item.save
-
+            # 빈칸 걸러내야 함
         end
 
 

@@ -5,6 +5,7 @@
         <div class="row">
             <% unless @second_buckets.nil? %>
                 <% @second_buckets.each do |bucket| %>
+
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
                         <img src="<%= bucket.thumbnail.url %>">
@@ -26,12 +27,18 @@
                         </div>
                     </div>
                 </div>
-            <% end %>
+
+                <% end %>
+                
             <% else %>
-                <div  class="bucket-main">
-                    <p class="lead">500여개의 꿈들을 후원해줄 200개의 회사가 당신의 꿈을 응원합니다.</p>
-                    <p><a class="btn btn-lg btn-primary" href="/bucket/make_bucket" role="button">프로젝트 등록하러 가기</a></p>
-                </div>
+
+            <div  class="bucket-main">
+                <p class="lead">500여개의 꿈들을 후원해줄 200개의 회사가 당신의 꿈을 응원합니다.</p>
+                <p>
+                    <a class="btn btn-lg btn-primary" href="/bucket/make_bucket" role="button">프로젝트 등록하러 가기</a>
+                </p>
+            </div>
+
             <% end %>
         </div>
 </div>

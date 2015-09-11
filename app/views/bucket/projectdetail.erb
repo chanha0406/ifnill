@@ -1,40 +1,35 @@
-<div style="margin-top:100px">
-    <div class="container marketing">
-      <div class="row">
+<div class="container bucket-container">
+    <div class="marketing">
+
+      <div class="row detail_top_info">
         <div class="col-lg-4">
-          <img class="img-circle" src="<%= @selected_bucket.thumbnail.url %>" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="<% if User.find(@selected_bucket.user_id).profile!=nil %> <%= User.find(@selected_bucket.user_id).profile %> <% else %> <%= image_url('default_profile.jpg')%><%end%> " alt="Generic placeholder image" width="140" height="140">
+          <h4><%= User.find(@selected_bucket.user_id).name %></h4>
         </div>
-        <div class="col-lg-5">
-          <h2><%= User.find(@selected_bucket.user_id).name %></h2>
-          <p><%= @selected_bucket.intro_simple %></p>
-          <div class="col-lg-4">
-            <h3>90%</h3>
+        <div class="col-lg-6">
+          <h2><%= @selected_bucket.name %></h2>
+          <h4><%= @selected_bucket.intro_simple %></h4>
+          <div class="col-lg-6">
+            <h3><%= ((@selected_bucket.items.where(:state => 2).count.to_f / @selected_bucket.items.count.to_f)*100).round(1) %> %</h3>
           </div>
-          <div class="col-lg-4">
-            <h3>7일남음</h3>
-          </div>
-          <div class="col-lg-4">
-            <h3>83명후원</h3>
+          <div class="col-lg-6">
+            <h3><%= Time.diff(@selected_bucket.finish_date, @selected_bucket.start_date, '%d')[:diff]  %> 남음</h3>
+            <h6><%= @selected_bucket.start_date %> ~ <%= @selected_bucket.finish_date %></h6>
           </div>
         </div>
-        <div class="col-lg-3">
-          <h5>
-            <% @selected_bucket.items.each do |item| %>
-              <% if item.state == 0 %>
-                #<%= item.name %>
-              <% end %>
-            <% end %>
-          </h5>
-          <br/><a class="btn btn-lg btn-primary" href="/bucket/support" role="button">후원하기</a>
+        <div class="col-lg-2">
+          <!-- empty-->
         </div>
       </div>
     </div>
+
     <hr class="featurette-divider">
+
     <div class="container">
       <div class="row">
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
-            <h2 style="margin-bottom:40px" class="blog-post-title"><%= @selected_bucket.name %></h2>
+            <!--
               <div class="col-md-12">
                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                       <ol class="carousel-indicators">
@@ -61,20 +56,31 @@
                       </a>
                   </div>
               </div>
-            <p><%= @selected_bucket.intro_detail %></p>
+              -->
+              <div class="col-lg-12">
+                <img src="<%= @selected_bucket.thumbnail.url %>" class="detail_img_container">
+              </div>
+            <p style="text-align:left"><%= @selected_bucket.intro_detail.gsub("\r\n","<br>").html_safe %></p>
           </div>
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail_support_btn">
+            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-lg btn-primary" href="/bucket/support" role="button">후원하기</a>
+          </div>
+
           <h4>후원이 필요해요!</h4>
-          <a href="#">
           <div class="sidebar-module sidebar-module-inset sidebar-module-inset-sn">
             <% @selected_bucket.items.each do |item| %>
               <% if item.state == 0 %>
+              <a href="#">
                 <li class="tag_li tag_support_yet" ><%= item.name %></li>
+              </a>
               <% end %>
             <% end %>
           </div>
-          </a>
+          
+
           <h4>후원중이에요!</h4>
           <div class="sidebar-module sidebar-module-inset sidebar-module-inset-si">
             <% @selected_bucket.items.each do |item| %>
@@ -105,6 +111,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="container">
       <div style="padding:10px 0px 50px">
           <div class="col-sm-3" style="text-align:left"><h3>후원 태그</h3> </div>
@@ -112,48 +120,29 @@
           <div class="col-sm-3" style="text-align:left"><h3>후원자</h3></div>
       </div>
       <hr>
-      <div style="padding:10px 0px 50px">
-          <div class="col-sm-3" style="text-align:left"><h4>#티켓</h4> </div>
-          <div class="col-sm-6" style="text-align:left"><h4>미국가는 티켓 2015.05.08 출발</h4></div>
-          <div class="col-sm-3" style="text-align:left"><h4>대한항공</h4> </div>
-      </div>
-      <div style="padding:10px 0px 50px">
-          <div class="col-sm-3" style="text-align:left"><h4> #배낭가방</h4> </div>
-          <div class="col-sm-6" style="text-align:left"><h4> 배낭여행 가는데 배낭가방이 없어요. 큰걸로~</h4></div>
-          <div class="col-sm-3" style="text-align:left"><h4> TUMI</h4> </div>
-      </div>
-      <div style="padding:10px 0px 50px">
-          <div class="col-sm-3" style="text-align:left"><h4> #5성급호텔숙박권</h4> </div>
-          <div class="col-sm-6" style="text-align:left"><h4> 별이 5개가 아니면 전 못 자요</h4></div>
-          <div class="col-sm-3" style="text-align:left"><h4> AIRBNB</h4> </div>
-      </div>
-      <div style="padding:10px 0px 50px">
-          <div class="col-sm-3" style="text-align:left"><h4> #Mercedes</h4> </div>
-          <div class="col-sm-6" style="text-align:left"><h4> 이동수단이 있어야죠!</h4></div>
-          <div class="col-sm-3" style="text-align:left"><h4> HYUNDAI</h4> </div>
-      </div>
-      <div style="padding:10px 0px 50px">
-          <div class="col-sm-3" style="text-align:left"><h4> #34-24-34 금발의 여성</h4> </div>
-          <div class="col-sm-6" style="text-align:left"><h4> 같이 여행을 갈 동반자가 있어야죠!</h4></div>
-          <div class="col-sm-3" style="text-align:left"><h4> 결혼해 DUO</h4> </div>
-      </div>
+      <% @selected_bucket.items.each do |item| %>
+          <div style="padding:10px 0px 50px">
+            <div class="col-sm-3" style="text-align:left"><h4><%= item.name %></h4> </div>
+            <div class="col-sm-6" style="text-align:left"><h4><%= item.intro %></h4></div>
+            <div class="col-sm-3" style="text-align:left"><h4><% if item.support!=nil %> <%= User.find(item.support.user_id).name %> <% else %> - <% end %></h4> </div>
+           </div>      
+      <% end %>
     </div>
+
+
     <div class="container marketing">
       <hr>
-      <div class="col-md-10">
-        <h3><% @selected_bucket.replies.count %>개의 댓글이 있어요.</h3>
+      <div class="col-md-12">
+        <h3 style="text-align:left"><%= @selected_bucket.replies.count %>개의 댓글이 있어요. <button type="submit" class="btn btn-primary btn-lg">등록하기</button></h3>
         <textarea class="form-control" rows="3" cols="auto"></textarea>
       </div>
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-primary" style="margin-top:90px">등록하기</button>
-      </div>
+     
       <div class="col-md-12">
-        <hr>
           <% @selected_bucket.replies.each do |reply| %>
-            <h3><span class="label label-info"><%= reply.user_id %></span></h3>
+            <hr>
+            <h3><span class="label label-info" style="text-align:left"><%= reply.user_id %></span></h3>
             <p><%= reply.context %></p>
           <% end %>
-        <hr>
       </div>
     </div>
 </div>
