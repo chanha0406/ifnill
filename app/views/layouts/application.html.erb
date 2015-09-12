@@ -10,6 +10,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+  <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
   <!-- Custom Fonts -->
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" 
 rel="stylesheet" type="text/css">
@@ -80,6 +82,10 @@ height="30px"></a>
       </div>
       <!-- /.container -->
   </nav>
+
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible" style="margin-top:60px"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><%= value %></div>
+  <% end %>
 
 
  <!-- /.container -->
