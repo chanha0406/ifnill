@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
 gem 'bootstrap_form'
 
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -7,6 +9,7 @@ gem 'autoprefixer-rails'
 
 gem 'figaro'
 gem 'devise'
+gem 'mailgun_rails'
 
 gem 'bootstrap-datepicker-rails'
 gem 'watu_table_builder', :require => 'table_builder'
@@ -16,8 +19,7 @@ gem 'fog'
 
 gem 'time_diff'
 
-gem 'fastimage_resize'
-# apt-get install libgd2-xpm-dev
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

@@ -38,14 +38,14 @@ class BucketController < ApplicationController
         bucket.intro_simple=params[:intro_simple]
         bucket.intro_detail=params[:intro_detail]
 
-        #if (params[:thumbnail]!=nil)
-        #  bucket.thumbnail = params[:thumbnail]
-        #end
-
         if (params[:thumbnail]!=nil)
-            outfile = FastImage.resize(params[:thumbnail], 500, 500)            
-            bucket.thumbnail = outfile
+         bucket.thumbnail = params[:thumbnail]
         end
+
+        # if (params[:thumbnail]!=nil)
+        #     outfile = FastImage.resize(params[:thumbnail], 500, 500)            
+        #     bucket.thumbnail = outfile
+        # end
         
         bucket.start_date=convert_date(params[:start_date])
         bucket.finish_date=convert_date(params[:finish_date])
