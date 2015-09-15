@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class BucketImageUploader < CarrierWave::Uploader::Base
+class UserImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -25,7 +25,7 @@ class BucketImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [500, 500]
+  # process :scale => [200, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -33,7 +33,7 @@ class BucketImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  process :resize_to_fit => [500, 500]
+  process :resize_to_fit => [200, 200]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -45,7 +45,7 @@ class BucketImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "bucket_image.jpg" if original_filename
+    "profile.jpg" if original_filename
   end
 
 end
