@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    mount_uploader :image, UserImageUploader
+    mount_uploader :profile, UserImageUploader
 end

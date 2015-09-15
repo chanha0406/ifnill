@@ -13,7 +13,7 @@
                   <em>(<%= @minimum_password_length %> characters minimum)</em>
                <% end %><br />
                <%= f.password_field :password_confirmation, autocomplete: "off", label: "비밀번호 확인" %>
-               <%= f.file_field :image, label:"프로필 사진" %>
+               <%= f.file_field :profile, label:"프로필 사진" %>
                <button type="submit" class="btn btn-default">회원가입</button>   
             <% end %>
 
