@@ -7,7 +7,6 @@
   
   <title>::ifnill</title>
   <%= stylesheet_link_tag 'application',params[:controller], media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <!-- Custom Fonts -->
@@ -77,16 +76,17 @@ rel="stylesheet" type="text/css">
           <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
-  </nav>
-
-  <div class="row">
+      <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %> alert-dismissible" style="margin-top:80px"><%= value %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+        <div class="alert alert-<%= key %> alert-dismissible"><%= value %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>
       <% end %>
     </div>
   </div>
+  </nav>
+
+  
 
 
  <!-- /.container -->

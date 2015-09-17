@@ -3,12 +3,12 @@
     <div class="container">
     <div>
         <div class="col-lg-4" style="text-align:center">
-            <img  class="img-circle" src="http://file2.instiz.net/data/file/20150607/5/5/b/55bdb695fa1dad95940b0d9cbde29769.png" alt="Generic placeholder image" width="140" height="140">
+            <img  class="img-circle" src="<%= image_url('default_profile.jpg')%>" width="140" height="140">
         </div>
         <div class="col-lg-6"  style="padding-bottom:50px">
             <div>
                 <h1 class="col-lg-6" style="margin-top:15px"><%= current_user.name %></h1><br>
-                <div class="col-lg-4" style="text-align:right; margin-bottom:25px" ><a href="/mypage/modify"  type="button" style="line-height: 16px; padding: 5px 17px;" class="btn btn-default">프로필 편집
+                <div class="col-lg-4" style="text-align:right; margin-bottom:25px" ><a href="/users/edit"  type="button" style="line-height: 16px; padding: 5px 17px;" class="btn btn-default">프로필 편집
                 </a></div>
                 <div class="col-lg-2">
                 </div>
