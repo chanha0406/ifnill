@@ -9,4 +9,6 @@ class MypageController < ApplicationController
 
 		#@user_supportbuckets=@user_info.supports
 	end
+
+
 end
