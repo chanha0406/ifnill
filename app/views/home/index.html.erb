@@ -26,10 +26,11 @@
             </div>
         </div>
     </div>
+    <div id="startchange"></div>
 </div>
 <!--메인 페이지 끝-->
 <!--ifnill소개 시작-->
-    <div class="row featurette featurette-divider">
+    <div class="row featurette featurette-divider" >
         <div class="col-md-5 col-md-push-7 basic">
         <!--<img class="featurette-image img-responsive center-block" src="" alt="Generic placeholder image">-->
         </div>
@@ -127,3 +128,30 @@
     <div class="featurette-divider"></div>
 <!--단계소개 끝-->    
 </div>
+
+<!-- startchange에서 색변화/ 스크롤 nav 색 변경 -->
+<script>  
+   $(document).ready(function(){       
+      var mq = window.matchMedia( "(min-width: 768px)" );
+      var scroll_start = 0;
+      var startchange = $('#startchange');
+      var offset = startchange.offset();
+      if (startchange.length){
+         if (mq.matches) { // window width is at least 500px
+            $(document).scroll(function() { 
+               scroll_start = $(this).scrollTop();
+
+               if(scroll_start > offset.top) {
+                  $(".navbar-default").css('background-color', '#333');
+               } else {
+                $('.navbar-default').css('background-color', 'transparent');
+               }
+            });   
+
+         }
+         else {// window width is less than 500px
+            $(".navbar-default").css('background-color', '#333');
+         }
+      }
+   });
+</script>
