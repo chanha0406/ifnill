@@ -92,7 +92,7 @@ class BucketController < ApplicationController
             # 빈칸 걸러내야 함
             end
 
-            flash[:sucess] =  "성공적으로 저장되었습니다."
+            flash[:success] =  "성공적으로 저장되었습니다."
             redirect_to "/bucket/projectdetail/#{bucket.id}"
         else
             flash[:danger] = "저장에 실패하였습니다."
@@ -104,7 +104,7 @@ class BucketController < ApplicationController
         @bucket=Bucket.new(bucket_params)
         @bucket.state = 0
         if @bucket.save
-            flash[:sucess] = "정상적으로 저장되었습니다."
+            flash[:success] = "정상적으로 저장되었습니다."
             redirect_to "/"
         else 
             session[:error] = @bucket.errors.full_messages
@@ -116,7 +116,7 @@ class BucketController < ApplicationController
             params.require(:bucket).permit(:name, :intro_simple, :intro_detail, :start_date, :final_date)
         end
 
-
+    public
     def convert_date (arg0)
         if arg0 == ""
         else
@@ -171,14 +171,14 @@ class BucketController < ApplicationController
         bucket.intro_simple=params[:intro_simple]
         bucket.intro_detail=params[:intro_detail]
 
-        #if (params[:thumbnail]!=nil)
-        #  bucket.thumbnail = params[:thumbnail]
-        #end
-
         if (params[:thumbnail]!=nil)
-            outfile = FastImage.resize(params[:thumbnail], 500, 500)            
-            bucket.thumbnail = outfile
+         bucket.thumbnail = params[:thumbnail]
         end
+
+        # if (params[:thumbnail]!=nil)
+        #     outfile = FastImage.resize(params[:thumbnail], 500, 500)            
+        #     bucket.thumbnail = outfile
+        # end
         
         bucket.start_date=convert_date(params[:start_date])
         bucket.finish_date=convert_date(params[:finish_date])
@@ -213,7 +213,7 @@ class BucketController < ApplicationController
         #state값 받아서 redirect할때 state 값을 기준으로 다른 페이지로 보내자
         if current_user.id == one_bucket.user_id
             one_bucket.destroy
-            flash[:sucess] = "정상적으로 삭제되었습니다."
+            flash[:success] = "정상적으로 삭제되었습니다."
             redirect_to "/bucket/projectList"
         else
             flash[:danger] = "권한이 없습니다."

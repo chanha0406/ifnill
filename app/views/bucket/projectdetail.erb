@@ -21,7 +21,7 @@
           <% unless current_user.nil? %>
             <% if @selected_bucket.user_id == current_user.id %>
               <a class="btn btn-lg btn-primary" href="/bucket/modify/<%= @selected_bucket.id %>">수정</a>
-              <a class="btn btn-lg btn-danger" href="/bucket/delete_bucket/<%= @selected_bucket.id %>">삭제</a>
+              <a class="btn btn-lg btn-danger" href="/bucket/delete_bucket/<%= @selected_bucket.id %>" data-confirm="정말로 삭제하시겠습니까?">삭제</a>
             <% end %>
           <% end %>
         </div>
