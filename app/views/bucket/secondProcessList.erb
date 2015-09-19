@@ -3,7 +3,7 @@
         <h1>2단계</h1>
     </div>
         <div class="row">
-            <% unless @second_buckets.nil? %>
+            <% unless @second_buckets.empty? %>
                 <% @second_buckets.each do |bucket| %>
 
                 <div class="col-sm-4 col-lg-4 col-md-4">
@@ -11,10 +11,10 @@
                         <img src="<%= bucket.thumbnail.url %>">
                         <div class="caption">
                             <h4 class="pull-right"><%= ((bucket.items.where(:state => 2).count.to_f / bucket.items.count.to_f)*100).round(1) %> %</h4>
-                            <h4><a href="/bucket/projectdetail/<%= bucket.id %>"><%= bucket.name %></a>
+                            <h4><a href="/bucket/projectdetail/<%= bucket.id %>" style="text-align:left"><%= bucket.name %></a>
                             </h4>
                             <p>
-                                <span><%= bucket.intro_simple %><span>
+                                <span style="text-align:left"><%= bucket.intro_simple %><span>
                                 <span class="pull-right">후원 종료</span>
                             </p>
                         </div>
@@ -35,7 +35,7 @@
             <div  class="bucket-main">
                 <p class="lead">500여개의 꿈들을 후원해줄 200개의 회사가 당신의 꿈을 응원합니다.</p>
                 <p>
-                    <a class="btn btn-lg btn-primary" href="/bucket/make_bucket" role="button">프로젝트 등록하러 가기</a>
+                    <a class="btn btn-lg btn-primary" href="/bucket/firstProcessList" role="button">등록된 버킷 보러 가기</a>
                 </p>
             </div>
 

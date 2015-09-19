@@ -4,11 +4,15 @@ class MypageController < ApplicationController
 
 
 	def mypage
-		
+		@user_info=User.find(current_user.id)
+		@user_mybuckets=Bucket.where(:user_id => current_user.id)
+
+		#@user_supportbuckets=@user_info.supports
 	end
 
 	def modify
 
 	end
+
 
 end

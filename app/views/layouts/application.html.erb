@@ -7,6 +7,7 @@
   
   <title>::ifnill</title>
   <%= stylesheet_link_tag 'application',params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
   <!-- Custom Fonts -->
@@ -25,14 +26,16 @@ rel="stylesheet" type="text/css">
       <div class="container topnav">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" 
+data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand topnav" href="/"><img src="
-              <% if params[:action]=='index' %><%= image_url("logo_white.png") %><%else%> <%= image_url("logo_blue.png")%><%end%>" height="30px"></a>
+              <% if params[:action]=='index' %><%= image_url('logo_white.png') %><%else%> <%= image_url('logo_blue.png')%><%end%>" 
+height="30px"></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -53,7 +56,6 @@ rel="stylesheet" type="text/css">
                 <% if current_user.nil? %>
                   <li>
                     <%= link_to 'Sign in', new_user_session_path %>
-
                   </li>
                   <% else %>
                   <li>
@@ -77,17 +79,18 @@ rel="stylesheet" type="text/css">
       </div>
       <!-- /.container -->
       <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %> alert-dismissible"><%= value %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-      <% end %>
-    </div>
-  </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %> alert-dismissible"><%= value %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+          <% end %>
+        </div>
+      </div>
   </nav>
 
-  
-
+  <% flash.each do %>
+  <div style="padding-top: 60px;"></div>
+  <% end %>
 
  <!-- /.container -->
   <%= yield %> 

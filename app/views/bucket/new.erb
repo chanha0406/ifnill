@@ -1,0 +1,17 @@
+<div style="margin-top:60px;"></div>
+<% if session[:error] %>
+<ul>
+  <% session[:error].each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= bootstrap_form_for(@bucket, url: {action: "create_bucket"}) do |f| %>
+   <%= f.text_field :name, label: "이름" %>
+   <%= f.text_field :intro_simple, label: "간단설명"%>
+   <%= f.text_area :intro_detail, label: "상세설명"%>
+   <%= f.date_field :start_date, label: "시작일자"%>
+   <%= f.date_field :finish_date, label: "종료일자"%>
+   <%= f.submit "제출"%>
+<%  end %>
